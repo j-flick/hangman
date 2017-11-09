@@ -1,0 +1,25 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "Command-line application to play hangman game.",
+  "main": "hangman.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-flick/hangman.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Justin Flick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j-flick/hangman/issues"
+  },
+  "homepage": "https://github.com/j-flick/hangman#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0"
+  }
+}
