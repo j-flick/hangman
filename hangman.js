@@ -21,25 +21,35 @@ function playGame(guesses) {
 			])
 			// Determine what we do once we have the input.
 			.then(answers => {
-				// Create a new letter object from the letter constructor.
-				var newLetter = new letter(answers.letter.toLowerCase());
+				// Convert to upper case for display.
+				var answer = answers.letter.toUpperCase();
+				// If the letter has not been guessed yet...
+				if (lettersGuessed.indexOf(answer) === -1) {
+					// Create a new letter object from the letter constructor.
+					var newLetter = new letter(answers.letter);
 
-				// Ensure empty blanks are displayed if the first user guess is incorrect.
-				if (guesses === 10) {
-					newLetter.displayBlanks();
+					// Ensure empty blanks are displayed if the first user guess is incorrect.
+					if (guesses === 10) {
+						newLetter.displayBlanks();
+					}
+
+					// Run the comparison method on the letter constructor.
+					newLetter.compareLetters();
+
+					// Add the user's guess to an array.
+					lettersGuessed.push(answer);
+					// Display user guesses.
+					console.log(`\nLetters guessed: ${lettersGuessed.join(", ")}\n`);
+
+					// Decrement guesses by 1 and call recursive playGame function.
+					guesses--;
+					playGame(guesses);
 				}
-
-				// Run the comparison method on the letter constructor.
-				newLetter.compareLetters();
-
-				// Add the user's guess to an array.
-				lettersGuessed.push(answers.letter.toUpperCase());
-				// Display user guesses.
-				console.log(`\nLetters guessed: ${lettersGuessed.join(", ")}\n`);
-
-				// Decrement guesses by 1 and call recursive playGame function.
-				guesses--;
-				playGame(guesses);
+				// If the letter has been guessed...
+				else {
+					console.log(`\nYou already guessed '${answer}'. Please try again.\n`);
+					playGame(guesses);
+				}
 			})
 		;
 	}
