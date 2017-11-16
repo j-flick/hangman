@@ -41,4 +41,7 @@ var letter = function(l) {
 	}
 }
 
-module.exports = letter;
+module.exports = {
+	letter: letter,
+	visibleLetters: visibleLetters
+}
